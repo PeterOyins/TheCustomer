@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TheCustomer — Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+    <div class="noise"></div>
+
+    <!-- Navigation -->
+    <nav class="app-nav">
+        <a href="/dashboard.html" class="app-brand">— TheCustomer</a>
+        <div class="nav-links">
+            <a href="/dashboard.html" class="nav-link active">Dashboard</a>
+            <a href="/staff.html" class="nav-link">Staff</a>
+        </div>
+        <button class="nav-logout">Logout</button>
+    </nav>
+
+    <main class="app-main">
+
+        <!-- Loading -->
+        <div id="loadingState" class="loading-state">
+            <div class="spinner"></div>
+            <p style="font-size:0.8rem;color:var(--slate)">Loading your dashboard…</p>
+        </div>
+
+        <!-- Business setup (shown when no business exists) -->
+        <div id="setupScreen" class="setup-screen hidden">
+            <h2>SET UP YOUR<br>BUSINESS</h2>
+            <p>You're almost there. Fill in your business details and we'll generate your QR code instantly.</p>
+
+            <div id="setupAlert" class="alert hidden"></div>
+
+            <form id="setupForm">
+                <div class="field">
+                    <label for="bizName">Business Name</label>
+                    <input type="text" id="bizName" placeholder="e.g. The Corner Café" required>
+                </div>
+                <div class="field">
+                    <label for="bizType">Business Type</label>
+                    <input type="text" id="bizType" placeholder="e.g. Restaurant, Salon, Retail…" required>
+                </div>
+                <div class="two-fields">
+                    <div class="field">
+                        <label for="bizPhone">Phone Number</label>
+                        <input type="tel" id="bizPhone" placeholder="+1 555 000 0000" required>
+                    </div>
+                    <div class="field">
+                        <label for="bizAddress">Address</label>
+                        <input type="text" id="bizAddress" placeholder="123 Main St" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn-submit" id="setupBtn">
+                    <span id="setupBtnText">Create Business &amp; Get QR Code</span>
+                    <span id="setupBtnLoader" class="hidden">Setting up…</span>
+                </button>
+            </form>
+        </div>
+
+        <!-- Dashboard content (shown once business exists) -->
+        <div id="dashContent" class="hidden">
+
+            <div class="page-header">
+                <h1 id="dashBizName">Business</h1>
+                <p id="dashBizType">Type</p>
+            </div>
+
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Total Reviews</div>
+                    <div class="stat-value" id="statTotal">0</div>
+                    <div class="stat-sub">all time</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Avg Business Rating</div>
+                    <div class="stat-value" id="statAvg">—</div>
+                    <div class="stat-sub" id="statStars"></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Active Staff</div>
+                    <div class="stat-value" id="statStaff">0</div>
+                    <div class="stat-sub"><a href="/staff.html" style="color:var(--slate);font-size:0.75rem">Manage →</a></div>
+                </div>
+            </div>
+
+            <!-- Leaderboard + QR -->
+            <div class="two-col">
+                <div class="section-card">
+                    <h2>Staff Leaderboard</h2>
+                    <div id="leaderboard" class="leaderboard-list">
+                        <div class="empty-state">
+                            <div class="empty-icon">🏆</div>
+                            <p>No reviews yet.<br>Share your QR code to start collecting feedback.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-card">
+                    <h2>Your QR Code</h2>
+                    <div id="qrWrapper" class="qr-wrapper">
+                        <div class="spinner"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent reviews -->
+            <div class="section-card">
+                <div class="section-card-header">
+                    <h2>Recent Reviews</h2>
+                    <button class="btn-view-all" id="btnViewAllReviews">View all →</button>
+                </div>
+                <div id="recentReviews" class="reviews-list">
+                    <div class="empty-state">
+                        <div class="empty-icon">💬</div>
+                        <p>No reviews yet. They'll appear here as customers scan your QR code.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- All Reviews Drawer -->
+    <div id="reviewsDrawer" class="staff-drawer hidden" role="dialog" aria-modal="true">
+        <div class="drawer-backdrop" id="reviewsDrawerBackdrop"></div>
+        <div class="drawer-panel">
+            <button class="drawer-close" id="reviewsDrawerClose" aria-label="Close">✕</button>
+            <div id="reviewsDrawerContent" class="drawer-content"></div>
+        </div>
+    </div>
+
+    <!-- Staff Profile Drawer -->
+    <div id="staffDrawer" class="staff-drawer hidden" role="dialog" aria-modal="true">
+        <div class="drawer-backdrop" id="drawerBackdrop"></div>
+        <div class="drawer-panel">
+            <button class="drawer-close" id="drawerClose" aria-label="Close">✕</button>
+            <div id="drawerContent" class="drawer-content"></div>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TheCustomer — Create Account</title>
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+
+    <div class="noise"></div>
+
+    <div class="auth-container">
+
+        <!-- LEFT: Brand panel -->
+        <div class="brand-panel">
+            <a href="index.html" class="brand-logo">— TheCustomer</a>
+
+            <div class="brand-content">
+                <h1 class="brand-headline">KNOW YOUR<br>TEAM'S<br>PULSE</h1>
+
+                <p class="brand-sub">
+                    Customers scan a QR code, leave honest feedback, and you see everything — by staff member — on your dashboard.
+                </p>
+
+                <div class="brand-stats">
+                    <div class="stat">
+                        <span class="stat-number">QR</span>
+                        <span class="stat-label">Instant Scan</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">5★</span>
+                        <span class="stat-label">Rating System</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">∞</span>
+                        <span class="stat-label">Staff Members</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="brand-footer">
+                Already have an account? <a href="login.html">Sign in →</a>
+            </div>
+        </div>
+
+        <!-- RIGHT: Form panel -->
+        <div class="form-panel">
+            <div class="form-wrapper">
+
+                <span class="form-eyebrow">Get started — it's free</span>
+                <h2 class="form-title">Create your account</h2>
+
+                <!-- Alert box -->
+                <div id="alert" class="alert hidden"></div>
+
+                <form id="registerForm" novalidate>
+
+                    <div class="field">
+                        <label for="name">Full Name</label>
+                        <input
+                            type="text"
+                            id="name"
+                            placeholder="Jane Doe"
+                            autocomplete="name"
+                            required
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="email">Email Address</label>
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="jane@mybusiness.com"
+                            autocomplete="email"
+                            required
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="password">Password</label>
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="At least 6 characters"
+                            autocomplete="new-password"
+                            required
+                        >
+                        <button type="button" class="toggle-pw" id="togglePw">Show</button>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <span id="btnText">Create Account</span>
+                        <span id="btnLoader" class="hidden">Creating…</span>
+                    </button>
+
+                </form>
+
+                <p class="form-note">
+                    No credit card required. Free forever for small teams.<br>
+                    Already registered? <a href="login.html">Sign in here</a>
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script src="js/register.js"></script>
+</body>
+</html>

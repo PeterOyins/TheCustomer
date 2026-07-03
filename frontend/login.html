@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TheCustomer — Sign In</title>
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+
+    <div class="noise"></div>
+
+    <div class="auth-container">
+
+        <!-- LEFT: Brand panel -->
+        <div class="brand-panel">
+            <a href="index.html" class="brand-logo">— TheCustomer</a>
+
+            <div class="brand-content">
+                <h1 class="brand-headline">WELCOME<br>BACK</h1>
+
+                <p class="brand-sub">
+                    Your team's ratings are waiting. Sign in to check your dashboard, review recent feedback, and see who's leading the board.
+                </p>
+
+                <div class="brand-stats">
+                    <div class="stat">
+                        <span class="stat-number">📊</span>
+                        <span class="stat-label">Dashboard</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">🏆</span>
+                        <span class="stat-label">Leaderboard</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">💬</span>
+                        <span class="stat-label">Live Reviews</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="brand-footer">
+                Don't have an account? <a href="register.html">Create one →</a>
+            </div>
+        </div>
+
+        <!-- RIGHT: Form panel -->
+        <div class="form-panel">
+            <div class="form-wrapper">
+
+                <span class="form-eyebrow">Business owner login</span>
+                <h2 class="form-title">Sign in to your account</h2>
+
+                <!-- Alert box -->
+                <div id="alert" class="alert hidden"></div>
+
+                <form id="loginForm" novalidate>
+
+                    <div class="field">
+                        <label for="email">Email Address</label>
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="jane@mybusiness.com"
+                            autocomplete="email"
+                            required
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="password">Password</label>
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Your password"
+                            autocomplete="current-password"
+                            required
+                        >
+                        <button type="button" class="toggle-pw" id="togglePw">Show</button>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <span id="btnText">Sign In</span>
+                        <span id="btnLoader" class="hidden">Signing in…</span>
+                    </button>
+
+                </form>
+
+                <p class="form-note">
+                    New here? <a href="register.html">Create a free account</a>
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script src="js/login.js"></script>
+</body>
+</html>

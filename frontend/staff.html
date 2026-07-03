@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TheCustomer — Staff</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+    <div class="noise"></div>
+
+    <!-- Navigation -->
+    <nav class="app-nav">
+        <a href="/dashboard.html" class="app-brand">— TheCustomer</a>
+        <div class="nav-links">
+            <a href="/dashboard.html" class="nav-link">Dashboard</a>
+            <a href="/staff.html" class="nav-link active">Staff</a>
+        </div>
+        <button class="nav-logout">Logout</button>
+    </nav>
+
+    <main class="app-main">
+
+        <!-- Loading -->
+        <div id="loadingState" class="loading-state">
+            <div class="spinner"></div>
+            <p style="font-size:0.8rem;color:var(--slate)">Loading staff…</p>
+        </div>
+
+        <!-- Main content (revealed after load) -->
+        <div id="pageContent" class="hidden">
+
+            <div class="page-header">
+                <h1>STAFF<br>MEMBERS</h1>
+                <p id="staffSubtitle">Your team</p>
+            </div>
+
+            <!-- Add staff -->
+            <div class="add-staff-panel">
+                <h2>Add New Staff Member</h2>
+                <div id="addAlert" class="alert hidden"></div>
+                <form id="addStaffForm">
+                    <div class="two-fields">
+                        <div class="field">
+                            <label for="staffName">Full Name</label>
+                            <input type="text" id="staffName" placeholder="Jane Doe" required>
+                        </div>
+                        <div class="field">
+                            <label for="staffPosition">Position / Role</label>
+                            <input type="text" id="staffPosition" placeholder="Cashier, Manager…" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-submit" id="addBtn">
+                        <span id="addBtnText">Add Staff Member</span>
+                        <span id="addBtnLoader" class="hidden">Adding…</span>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Staff list -->
+            <div id="staffList" class="staff-list">
+                <!-- populated by JS -->
+            </div>
+
+        </div>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/staff.js"></script>
+</body>
+</html>

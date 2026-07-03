@@ -1,0 +1,345 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --navy:   #2D3E6E;
+    --slate:  #5B7BA8;
+    --sky:    #7BB8D4;
+    --powder: #C5E1EF;
+    --ice:    #F0F4F8;
+    --white:  #FFFFFF;
+    --text:   #1E2A45;
+    --ease:   cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--ice);
+    color: var(--navy);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ── Noise overlay ─────────────────────────────── */
+.noise {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    opacity: 0.04;
+}
+
+/* ── Split layout ──────────────────────────────── */
+.auth-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+}
+
+/* ── Brand panel (left) ────────────────────────── */
+.brand-panel {
+    background: var(--navy);
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2.5rem 3rem;
+    position: relative;
+    overflow: hidden;
+    animation: slideInLeft 1.2s var(--ease) both;
+}
+
+@keyframes slideInLeft {
+    from { transform: translateX(-40px); opacity: 0; }
+    to   { transform: translateX(0); opacity: 1; }
+}
+
+/* decorative circle */
+.brand-panel::before {
+    content: '';
+    position: absolute;
+    bottom: -8rem;
+    right: -6rem;
+    width: 28rem;
+    height: 28rem;
+    background: var(--sky);
+    opacity: 0.12;
+    border-radius: 50%;
+}
+
+.brand-logo {
+    font-family: 'Anton', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sky);
+    text-decoration: none;
+    position: relative;
+    z-index: 1;
+}
+
+.brand-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.brand-headline {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(3rem, 5.5vw, 5.5rem);
+    line-height: 0.88;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    animation: revealUp 1.2s var(--ease) 0.2s both;
+}
+
+@keyframes revealUp {
+    from { transform: translateY(60px); opacity: 0; }
+    to   { transform: translateY(0); opacity: 1; }
+}
+
+.brand-sub {
+    font-size: 0.9rem;
+    color: var(--powder);
+    line-height: 1.75;
+    max-width: 30ch;
+    animation: revealUp 1.2s var(--ease) 0.35s both;
+}
+
+.brand-stats {
+    display: flex;
+    gap: 2.5rem;
+    animation: revealUp 1.2s var(--ease) 0.5s both;
+}
+
+.stat { display: flex; flex-direction: column; gap: 0.25rem; }
+
+.stat-number {
+    font-family: 'Anton', sans-serif;
+    font-size: 2rem;
+    color: var(--sky);
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--powder);
+    font-weight: 700;
+}
+
+.brand-footer {
+    font-size: 0.825rem;
+    color: var(--powder);
+    position: relative;
+    z-index: 1;
+}
+
+.brand-footer a {
+    color: var(--sky);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.brand-footer a:hover { color: var(--white); }
+
+/* ── Form panel (right) ────────────────────────── */
+.form-panel {
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 2rem;
+    animation: fadeSlideIn 1s var(--ease) 0.25s both;
+}
+
+@keyframes fadeSlideIn {
+    from { transform: translateX(30px); opacity: 0; }
+    to   { transform: translateX(0); opacity: 1; }
+}
+
+.form-wrapper { width: 100%; max-width: 400px; }
+
+.form-eyebrow {
+    display: block;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.35em;
+    color: var(--slate);
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+}
+
+.form-title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 2rem;
+    line-height: 1.2;
+}
+
+/* ── Alert ─────────────────────────────────────── */
+.alert {
+    padding: 0.875rem 1rem;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    animation: revealUp 0.4s var(--ease) both;
+}
+
+.alert.error   { background: #fff1f1; color: #c0392b; border: 1.5px solid #fecaca; }
+.alert.success { background: #f0f8ff; color: var(--navy); border: 1.5px solid var(--sky); }
+.alert.hidden  { display: none; }
+
+/* ── Fields ────────────────────────────────────── */
+.field { margin-bottom: 1.25rem; position: relative; }
+
+.field label {
+    display: block;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+}
+
+.field input {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 1.5px solid var(--sky);
+    border-radius: 10px;
+    background: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: var(--navy);
+    transition: border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
+    outline: none;
+}
+
+.field input:focus {
+    border-color: var(--navy);
+    box-shadow: 0 0 0 3px rgba(45, 62, 110, 0.1);
+}
+
+.field input::placeholder { color: var(--slate); }
+
+.toggle-pw {
+    position: absolute;
+    right: 1rem;
+    top: 2.55rem;
+    background: none;
+    border: none;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--slate);
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.15s;
+}
+
+.toggle-pw:hover { color: var(--navy); }
+
+/* ── Submit button ─────────────────────────────── */
+.submit-btn {
+    width: 100%;
+    padding: 1rem;
+    margin-top: 0.5rem;
+    background: var(--navy);
+    color: var(--white);
+    border: none;
+    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    cursor: pointer;
+    transition: transform 0.25s var(--ease), background 0.2s;
+}
+
+.submit-btn:hover   { background: var(--text); transform: translateY(-2px); }
+.submit-btn:active  { transform: translateY(0); }
+.submit-btn:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
+
+.hidden { display: none; }
+
+.form-note {
+    font-size: 0.72rem;
+    color: var(--slate);
+    text-align: center;
+    margin-top: 1.5rem;
+    line-height: 1.6;
+}
+
+.form-note a {
+    color: var(--navy);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1.5px solid var(--sky);
+}
+
+/* ── Divider ───────────────────────────────────── */
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    color: var(--slate);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+
+.divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--powder);
+}
+
+/* ── Responsive ────────────────────────────────── */
+@media (max-width: 768px) {
+    .auth-container { grid-template-columns: 1fr; }
+
+    .brand-panel {
+        min-height: 220px;
+        padding: 1.75rem 1.5rem;
+    }
+
+    .brand-content { gap: 1.25rem; }
+    .brand-headline { font-size: clamp(2.5rem, 14vw, 4rem); }
+    .brand-sub { display: none; }
+    .brand-stats { gap: 1.5rem; }
+
+    .form-panel { padding: 2.5rem 1.5rem; }
+}
+
+@media (max-width: 480px) {
+    .brand-panel {
+        min-height: 160px;
+        padding: 1.25rem;
+    }
+
+    .brand-stats { gap: 1.25rem; }
+    .stat-number { font-size: 1.5rem; }
+    .stat-label  { font-size: 0.58rem; }
+
+    .form-panel     { padding: 2rem 1.25rem; }
+    .form-wrapper   { max-width: 100%; }
+    .form-title     { font-size: 1.5rem; }
+    .field input    { font-size: 1rem; }
+    .submit-btn     { font-size: 0.68rem; padding: 0.875rem; }
+}

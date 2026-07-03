@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave a Review</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/feedback.css">
+</head>
+<body>
+
+    <div class="noise"></div>
+
+    <!-- Loading state -->
+    <div id="pageLoading" class="page-loading">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Error state (bad businessId) -->
+    <div id="pageError" class="page-error hidden">
+        <h2>NOT FOUND</h2>
+        <p>This QR code doesn't match any business in our system.</p>
+    </div>
+
+    <!-- Thank you screen (shown after submit) -->
+    <div id="thankYou" class="thank-you hidden">
+        <div class="ty-icon">🎉</div>
+        <h2 class="ty-title">THANK<br>YOU!</h2>
+        <p class="ty-sub">Your feedback helps this business improve. We really appreciate it.</p>
+    </div>
+
+    <!-- Feedback form -->
+    <div id="feedbackForm" class="hidden">
+        <div class="feedback-wrap">
+
+            <!-- Business header -->
+            <div class="feedback-header">
+                <h1 class="biz-name" id="bizName">Business</h1>
+                <p class="biz-type" id="bizType">Type</p>
+            </div>
+
+            <!-- Business rating -->
+            <div class="fb-card">
+                <h2>How was your overall experience?</h2>
+
+                <div class="star-row" id="bizStars">
+                    <!-- stars built by JS -->
+                </div>
+                <p class="star-hint" id="bizStarHint">Tap a star to rate</p>
+
+                <textarea
+                    class="fb-textarea"
+                    id="bizComment"
+                    rows="3"
+                    placeholder="Tell us about your visit… (optional)"
+                ></textarea>
+            </div>
+
+            <!-- Staff toggle -->
+            <div class="fb-card">
+                <h2>Did a team member help you?</h2>
+
+                <label class="staff-toggle" id="staffToggle">
+                    <div class="toggle-track" id="toggleTrack"></div>
+                    <span class="toggle-label">Yes, I'd like to review a staff member</span>
+                </label>
+
+                <!-- Staff picker (hidden until toggle on) -->
+                <div id="staffPickerSection" class="hidden" style="margin-top:1.25rem">
+                    <div class="staff-grid" id="staffGrid">
+                        <!-- chips built by JS -->
+                    </div>
+                </div>
+
+                <!-- Staff rating (hidden until staff selected) -->
+                <div id="staffRatingSection" class="staff-rating-section hidden" style="margin-top:1.5rem">
+                    <div style="border-top:1px solid var(--sage);padding-top:1.25rem">
+                        <h2 style="margin-bottom:1rem">Rate <span id="selectedStaffName">them</span></h2>
+                        <div class="star-row" id="staffStars">
+                            <!-- stars built by JS -->
+                        </div>
+                        <p class="star-hint" id="staffStarHint">Tap a star to rate</p>
+                        <textarea
+                            class="fb-textarea"
+                            id="staffComment"
+                            rows="3"
+                            placeholder="What stood out about them? (optional)"
+                        ></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit -->
+            <button class="btn-submit" id="submitBtn">
+                <span id="submitText">Submit Review</span>
+                <span id="submitLoader" class="hidden">Submitting…</span>
+            </button>
+
+        </div>
+    </div>
+
+    <script src="js/feedback.js"></script>
+</body>
+</html>
